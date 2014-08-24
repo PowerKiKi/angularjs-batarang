@@ -24,9 +24,9 @@ angular.module('panelApp').controller('ModelCtrl', function ModelCtrl($scope, ap
 
   $scope.selectedRoot = null;
   $scope.selectedScope = null;
+  $scope.numScopes = 0;
 
   $scope.enableInspector = appModel.enableInspector;
-
 
   $scope.$on('poll', function () {
 
@@ -50,6 +50,7 @@ angular.module('panelApp').controller('ModelCtrl', function ModelCtrl($scope, ap
       appModel.getScopeTree($scope.selectedRoot, function (tree) {
         $scope.$apply(function () {
           $scope.tree = tree;
+          $scope.treeTotal = appModel.getScopeTotal();
         });
       });
     }
