@@ -1,6 +1,7 @@
 angular.module('panelApp').controller('PerfCtrl', function PerfCtrl($scope, appContext, appPerf, appModel, appWatch, filesystem) {
 
   $scope.histogram = [];
+  $scope.totalTime = 0;
 
   $scope.roots = [];
 
@@ -27,6 +28,7 @@ angular.module('panelApp').controller('PerfCtrl', function PerfCtrl($scope, appC
     appPerf.get(function (histogram) {
       $scope.$apply(function () {
         $scope.histogram = histogram;
+        $scope.totalTime = appPerf.getTotalTime();
       });
     });
     appModel.getRootScopes(function (rootScopes) {
@@ -41,6 +43,7 @@ angular.module('panelApp').controller('PerfCtrl', function PerfCtrl($scope, appC
     });
     appWatch.getWatchTree($scope.selectedRoot, function (tree) {
       $scope.tree = tree;
+      $scope.treeTotal = appWatch.getWatchTotal();
     });
   });
 
