@@ -2,6 +2,7 @@ angular.module('panelApp').controller('PerfCtrl', function PerfCtrl($scope, appC
 
   $scope.histogram = [];
   $scope.totalTime = 0;
+  $scope.treeTotal = 0;
 
   $scope.roots = [];
 
