@@ -10,7 +10,7 @@ angular.module('panelApp').factory('filesystem', function(chromeExtension) {
     exportJSON: function (name, data) {
       //TODO: file size/limits? 1024*1024
        window.webkitRequestFileSystem(window.TEMPORARY, 1024*1024, function (fs) {
-        fs.root.getFile(name + '.json', {create: true}, function (fileEntry) {
+        fs.root.getFile(name + Date.now() + '.json', {create: true}, function (fileEntry) {
           fileEntry.createWriter(function(fileWriter) {
 
             var blob = new Blob([ JSON.stringify(data) ], { type: 'text/plain' });
