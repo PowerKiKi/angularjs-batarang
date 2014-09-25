@@ -57,6 +57,9 @@ angular.module('panelApp').factory('appPerf', function (chromeExtension, appCont
         callback(_histogramCache);
       });
     },
+    getTotalTime: function () {
+      return _totalCache;
+    },
     clear: clear
   };
 });
